@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:local": "set NODE_ENV=development&& tsc -p tsconfig.json",
     "build:prod": "set NODE_ENV=production&& tsc -p tsconfig.json",
-    "start:dev": "nodemon ./src/server/index.ts",
+    "start:dev": "nodemon -r tsconfig-paths/register ./src/server/index.ts",
     "start:prod": "node ./dist/server/index.js",
     "start:db": "docker-compose up -d&& docker-compose logs -f",
     "dev": "set NODE_ENV=development&& npm run start:dev",

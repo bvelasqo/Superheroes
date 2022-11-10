@@ -6,7 +6,7 @@ export class MapperSuperhero {
   static toCore(superheroe: SuperheroDto): Superhero {
     return {
       id: superheroe.id,
-      name: superheroe.name,
+      name: superheroe.name.toLowerCase(),
       description: superheroe.description,
       image: superheroe.image
     };
@@ -15,7 +15,7 @@ export class MapperSuperhero {
   static toDto(superheroe: Superhero): SuperheroDto {
     return {
       id: superheroe.id,
-      name: superheroe.name,
+      name: superheroe.name.toLowerCase(),
       description: superheroe.description,
       image: superheroe.image
     };
@@ -25,7 +25,7 @@ export class MapperSuperhero {
     return superheroeList.map(superheroe => {
       return {
         id: superheroe.id,
-        name: superheroe.name,
+        name: superheroe.name.toLowerCase(),
         description: superheroe.description,
         image: superheroe.image
       };
@@ -36,7 +36,7 @@ export class MapperSuperhero {
     return superheroeList.map(superheroe => {
       return {
         id: superheroe.id,
-        name: superheroe.name,
+        name: superheroe.name.toLowerCase(),
         description: superheroe.description,
         image: superheroe.image
       };
@@ -46,8 +46,8 @@ export class MapperSuperhero {
   static toPersistence(superheroe: Superhero): HeroDao {
     return {
       pk: 'hero',
-      sk: `${superheroe.name}#${superheroe.id}`,
-      name: superheroe.name,
+      sk: `${superheroe.name.toLowerCase()}#${superheroe.id}`,
+      name: superheroe.name.toLowerCase(),
       description: superheroe.description,
       image: superheroe.image,
       createdAt: superheroe.createdAt,
@@ -58,7 +58,7 @@ export class MapperSuperhero {
   static toCoreFromPersistence(superheroe: HeroDao): Superhero {
     return {
       id: superheroe.sk.split('#')[1],
-      name: superheroe.name,
+      name: superheroe.name.toLowerCase(),
       description: superheroe.description,
       image: superheroe.image,
       createdAt: superheroe.createdAt,
@@ -70,7 +70,7 @@ export class MapperSuperhero {
     return superheroeList.map(superheroe => {
       return {
         id: superheroe.sk.split('#')[1],
-        name: superheroe.name,
+        name: superheroe.name.toLowerCase(),
         description: superheroe.description,
         image: superheroe.image,
         createdAt: superheroe.createdAt,
@@ -84,7 +84,7 @@ export class MapperSuperhero {
       return {
         pk: 'hero',
         sk: `${superheroe.name}#${superheroe.id}`,
-        name: superheroe.name,
+        name: superheroe.name.toLowerCase(),
         description: superheroe.description,
         image: superheroe.image,
         createdAt: superheroe.createdAt,
